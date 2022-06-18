@@ -76,13 +76,7 @@ def program(checkPassword, checkDni):
                         print("\nOpcion incorrecta, regresando al menu.")
                         sleep(1)
                     opciones.consultas(saldo_pesos,saldo_soles, ultimos_mov, opcion_consulta, moneda, visualizar)
-
-
-
-
-
-
-
+                    
                 elif opcion == 2:
 
                     os.system ("cls")

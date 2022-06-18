@@ -2,6 +2,10 @@ from time import sleep
 import tpgrupalbase
 
 def verificadorDeOpcion(opcion):
+    """
+    Recibe un valor numerico que representa la cantidad de opciones validas. Retorna True si la opcion es valida y False si la opcion no es valida.
+    """
+
     if opcion == 1 or opcion == 2:
         valido = True
     else:
@@ -9,6 +13,10 @@ def verificadorDeOpcion(opcion):
     return(valido)
 
 def movimientos(opcion, monto, divisa, lista_mov):
+    """
+    Recibe un numero de opcion, un monto, la divisa que se desea y un historial de movimientos. Retorna la lista de movimientos modificada.
+    """
+
     if opcion == 1:
         lista_mov.append(f"Retiro de: {monto} {divisa}")
     elif opcion == 2:
@@ -19,12 +27,20 @@ def movimientos(opcion, monto, divisa, lista_mov):
     return(lista_mov)
 
 def imprimirTicket(lista):
+    """
+    Recibe una lista que sera imprimida en pantalla en formato Ticket.
+    """
+
     print("╔══════════════════════════════════════════╗")
     for element in lista:
         print(f"║{element.center(42)}║")
     print("╚══════════════════════════════════════════╝")
 
 def consultadorSaldo(saldo, visualizar, divisa):
+    """
+    Recibe el saldo a mostrar, la opcion de como se visualizara y la divisa consultada y lo muestra en pantalla o en un ticket.
+    """
+    
     saldo_lista = ["El" , "saldo", "disponible", "es de", str(saldo), divisa,]
     if visualizar == 1:
         print(f"El saldo disponible es de: \n {saldo} {divisa}")
@@ -67,46 +83,6 @@ def consultas(saldo_pesos, saldo_soles, lista_mov, opcion, moneda, visualizar):
             else: 
                 print("\nOpcion incorrecta, volviendo al menu")
                 sleep(2)
-    else:
-        pass
-
-'''    while opcion_valida:
-            if opcion == 1:
-                while moneda_valida:
-                    if moneda == 1:
-                        print("Eligio mostrar el saldo en Soles Peruanos (./S)")
-                        opcion_valida = False
-                        moneda_valida = False
-                        while visualizar_valido:
-                            visualizar_valido = consultadorSaldo(saldo_soles, visualizar_valido, "Soles Peruanos")
-                    elif moneda == 2:
-                        divisa = "Pesos Argentinos"
-                        print("Eligio mostrar el saldo en Pesos Argentinos ($S)")
-                        opcion_valida = False
-                        moneda_valida = False
-                        while visualizar_valido:
-                            visualizar_valido = consultadorSaldo(saldo_pesos, visualizar_valido, "Pesos Argentinos")
-                    else:
-                        print("Moneda incorrecta, ingrese una opcion valida.")
-            if opcion == 2:
-                while visualizar_valido:
-                    if visualizar == 1:
-                        print("\nMovimientos:\n")
-                        for i in movimientos(0,0,0,lista_mov):
-                            print(f"{i}\n")
-                        sleep(3)
-                        visualizar_valido = False
-                        opcion_valida = False
-                    elif visualizar == 2:
-                        print("Imprimiendo reporte...")
-                        sleep(1)
-                        imprimirTicket(movimientos(0,0,0,lista_mov))
-                        sleep(3)
-                        visualizar_valido = False
-                        opcion_valida = False
-
-                    else: 
-                        print("Opcion incorrecta.")'''
 
 def retirar(saldo_pesos, saldo_soles, cont_clave,CLAVE, lista_mov):
     opcion_valida = True
