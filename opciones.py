@@ -34,7 +34,7 @@ def consultas(saldo_pesos, saldo_soles):
                         moneda_valida = False
                         visualizar_valido = True
                         while visualizar_valido:
-                            visualizar_valido = saldo(saldo_soles, visualizar_valido, divisa)
+                            visualizar_valido = consultadorSaldo(saldo_soles, visualizar_valido, divisa)
                     elif moneda == 2:
                         divisa = "Pesos Argentinos"
                         print("Eligio mostrar el saldo en Pesos Argentinos ($S)")
@@ -42,7 +42,7 @@ def consultas(saldo_pesos, saldo_soles):
                         moneda_valida = False
                         visualizar_valido = True
                         while visualizar_valido:
-                            visualizar_valido = saldo(saldo_pesos, visualizar_valido,divisa)
+                            visualizar_valido = consultadorSaldo(saldo_pesos, visualizar_valido,divisa)
                     else:
                         print("Moneda incorrecta, ingrese una opcion valida.")
             if opcion == 2:
@@ -64,7 +64,7 @@ def consultas(saldo_pesos, saldo_soles):
                     else: 
                         print("Opcion incorrecta.")
 
-def saldo(saldo, visualizar_valido, divisa):
+def consultadorSaldo(saldo, visualizar_valido, divisa):
     saldo_lista = ["El" , "saldo", "disponible", "es de", str(saldo), divisa,]
 
     visualizar = int(input("Como desea visualizar la consulta?: \n\n[1] En pantalla \n[2] Imprimir reporte \n"))
