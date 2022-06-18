@@ -46,19 +46,18 @@ def consultas(saldo_pesos, saldo_soles, lista_mov):
                 while moneda_valida:
                     moneda = int(input("Ingrese el tipo de moneda: [1. Soles] [2. Pesos] " ))
                     if moneda == 1:
-                        divisa = "Soles Peruanos"
                         print("Eligio mostrar el saldo en Soles Peruanos (./S)")
                         opcion_valida = False
                         moneda_valida = False
                         while visualizar_valido:
-                            visualizar_valido = consultadorSaldo(saldo_soles, visualizar_valido, divisa)
+                            visualizar_valido = consultadorSaldo(saldo_soles, visualizar_valido, "Soles Peruanos")
                     elif moneda == 2:
                         divisa = "Pesos Argentinos"
                         print("Eligio mostrar el saldo en Pesos Argentinos ($S)")
                         opcion_valida = False
                         moneda_valida = False
                         while visualizar_valido:
-                            visualizar_valido = consultadorSaldo(saldo_pesos, visualizar_valido,divisa)
+                            visualizar_valido = consultadorSaldo(saldo_pesos, visualizar_valido, "Pesos Argentinos")
                     else:
                         print("Moneda incorrecta, ingrese una opcion valida.")
             if opcion == 2:
@@ -203,6 +202,7 @@ def transferir(saldo_soles, saldo_pesos, cuenta_destino, lista_mov):
                     monto = abs(int(input("\n->")))
                     if monto <= saldo_soles:
                         saldo_soles -= monto
+                        lista_mov = movimientos(2,monto, "Soles Peruanos", lista_mov)
                         monto_correcto = False
                         opcion_valida = False
 
@@ -222,6 +222,7 @@ def transferir(saldo_soles, saldo_pesos, cuenta_destino, lista_mov):
                     monto = abs(int(input("\n->")))
                     if monto <= saldo_pesos:
                         saldo_pesos -= monto
+                        lista_mov = movimientos(2,monto, "Pesos Argentinos", lista_mov)
                         monto_correcto = False
                         opcion_valida = False
                         print(f"Saldo transferido con exito.\nEl saldo disponible actual en Pesos es: ${saldo_pesos}")

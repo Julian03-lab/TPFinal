@@ -51,7 +51,7 @@ def program(checkPassword, checkDni):
     cont_dni = 0
     seguir = True
 
-    ultimos_mov = ["Retiro de: 2300 Soles Peruanos.","Transferencia de: 200 Soles Peruanos","Retiro de: 182 Pesos Argentinos","Transferencia de: 1000 Pesos Argentinos"]
+    ultimos_mov = ["Retiro de: 2300 Soles Peruanos.","Transferencia de: 200 Soles Peruanos","Retiro de: 182 Pesos Argentinos","Transferencia de: 1000 Pesos Argentinos","Transferencia de: 230 Soles Peruanos","Ingreso de: 2100 Pesos Argentinos","Retiro de: 200 Soles Peruanos","Transferencia de: 300 Pesos Argentinos","Ingreso de: 1000 Soles Peruanos"]
 
     if checkPassword(cont_clave, CLAVE):
         if checkDni(cont_dni, DNI):
