@@ -1,13 +1,13 @@
-#Este cajero automatico tiene las siguientes funciones:
+# Este cajero automatico tiene las siguientes funciones:
 
-##Consultas
-    [X] Saldo
-        *Consultar saldo en Soles y Pesos.
-    [X] Movimientos
-        *Lista de movimientos.
-        *Impresion de Ticket.
-##Retiros
+## Consultas
+- [x] Saldo
+  * Consultar saldo en Soles y Pesos.
+- [x] Movimientos
+  * Lista de movimientos.
+  * Impresion de Ticket.
+## Retiros
 
-##Transferencia
+## Transferencia
 
-##Salir
+## Salir
