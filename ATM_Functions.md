@@ -7,12 +7,16 @@
 ## Consultas
 - [x] Saldo
   * Consultar saldo en Soles y Pesos.
+  * Impresion de Ticket.
+  * Impresion por pantalla.
 - [x] Movimientos
   * Lista de movimientos.
   * Impresion de Ticket.
+  * Impresion por pantalla.
 ## Retiros
-- [x] 
-- [x] Movimientos
+- [x] Se resta el saldo dependiendo de la moneda.
+- [x] Se vuelve a pedir verificacion de cuenta a la hora del retiro.
+- [x] Se ve reflejado en los movimientos
 
 ## Transferencia
 
