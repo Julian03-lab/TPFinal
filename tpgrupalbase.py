@@ -60,8 +60,29 @@ def program(checkPassword, checkDni):
                 os.system ("cls")
                 print("\nIngrese una opcion: \n\n[1] Consultas \n[2] Retiros \n[3] Transferencias \n[4] Salir" )
                 opcion = int(input("\n-> "))
+                
+
                 if opcion == 1:
-                    opciones.consultas(saldo_pesos,saldo_soles, ultimos_mov)
+                    moneda = None
+                    visualizar = None
+                    print("Seleccione una opcion: \n\n[1] Posicion GLOBAL \n[2] Movimientos")
+                    opcion_consulta = int(input("-> "))
+                    if opcion_consulta == 1:
+                        moneda = int(input("Ingrese el tipo de moneda: [1. Soles] [2. Pesos] " ))
+                        visualizar = int(input("Como desea visualizar la consulta?: \n\n[1] En pantalla \n[2] Imprimir reporte \n"))
+                    elif opcion_consulta == 2:
+                        visualizar = int(input("Como desea visualizar la consulta?: \n\n[1] En pantalla \n[2] Imprimir reporte \n-> "))
+                    else:
+                        print("\nOpcion incorrecta, regresando al menu.")
+                        sleep(1)
+                    opciones.consultas(saldo_pesos,saldo_soles, ultimos_mov, opcion_consulta, moneda, visualizar)
+
+
+
+
+
+
+
                 elif opcion == 2:
 
                     os.system ("cls")
