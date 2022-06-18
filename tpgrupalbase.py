@@ -51,7 +51,7 @@ def program(checkPassword, checkDni):
     cont_dni = 0
     seguir = True
 
-
+    ultimos_mov = ["Retiro de: 2300 Soles Peruanos.","Transferencia de: 200 Soles Peruanos","Retiro de: 182 Pesos Argentinos","Transferencia de: 1000 Pesos Argentinos"]
 
     if checkPassword(cont_clave, CLAVE):
         if checkDni(cont_dni, DNI):
@@ -61,16 +61,16 @@ def program(checkPassword, checkDni):
                 print("\nIngrese una opcion: \n\n[1] Consultas \n[2] Retiros \n[3] Transferencias \n[4] Salir" )
                 opcion = int(input("\n-> "))
                 if opcion == 1:
-                    opciones.consultas(saldo_pesos,saldo_soles)
+                    opciones.consultas(saldo_pesos,saldo_soles, ultimos_mov)
                 elif opcion == 2:
 
                     os.system ("cls")
-                    saldo_pesos, saldo_soles = opciones.retirar(saldo_pesos,saldo_soles,cont_clave,CLAVE)
+                    saldo_pesos, saldo_soles = opciones.retirar(saldo_pesos,saldo_soles,cont_clave,CLAVE, ultimos_mov)
                     
                 elif opcion == 3:
                 #Se modifican el saldo en soles y pesos en base al valor retornado por la funcion.
                     os.system ("cls")
-                    saldo_pesos, saldo_soles = opciones.transferir(saldo_soles,saldo_pesos, CUENTA_DESTINO)
+                    saldo_pesos, saldo_soles = opciones.transferir(saldo_soles,saldo_pesos, CUENTA_DESTINO, ultimos_mov)
                     
                     
                 elif opcion == 4:
