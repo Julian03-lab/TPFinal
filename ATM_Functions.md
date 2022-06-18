@@ -1,8 +1,8 @@
 # Este cajero automatico tiene las siguientes funciones:
 
 ## Funciones basicas
-- [x] Verificacion de Clave
-- [x] Verificacion de DNI
+- [x] Verificacion de Clave.
+- [x] Verificacion de DNI.
 
 ## Consultas
 - [x] Saldo
@@ -16,8 +16,12 @@
 ## Retiros
 - [x] Se resta el saldo dependiendo de la moneda.
 - [x] Se vuelve a pedir verificacion de cuenta a la hora del retiro.
-- [x] Se ve reflejado en los movimientos
+- [x] Se ve reflejado en los movimientos.
 
 ## Transferencia
+- [x] Se resta el saldo dependiendo de la moneda.
+- [x] Si la cuenta es incorrecta el dinero se transfiere, pero avisa sobre la devolucion.
+- [x] Se ve reflejado en los movimientos.
 
 ## Salir
+- [x] Finaliza la ejecucion del programa.
