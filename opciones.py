@@ -1,6 +1,13 @@
 from time import sleep
 import tpgrupalbase
 
+def verificadorDeOpcion(opcion):
+    if opcion == 1 or opcion == 2:
+        valido = True
+    else:
+        valido = False
+    return(valido)
+
 def movimientos(opcion, monto, divisa, lista_mov):
     if opcion == 1:
         lista_mov.append(f"Retiro de: {monto} {divisa}")
@@ -17,34 +24,55 @@ def imprimirTicket(lista):
         print(f"║{element.center(42)}║")
     print("╚══════════════════════════════════════════╝")
 
-def consultadorSaldo(saldo, visualizar_valido, divisa):
+def consultadorSaldo(saldo, visualizar, divisa):
     saldo_lista = ["El" , "saldo", "disponible", "es de", str(saldo), divisa,]
-
-    visualizar = int(input("Como desea visualizar la consulta?: \n\n[1] En pantalla \n[2] Imprimir reporte \n"))
     if visualizar == 1:
         print(f"El saldo disponible es de: \n {saldo} {divisa}")
-        visualizar_valido = False
-        input("Presiones [Enter] para continuar")
+        sleep(3)
     elif visualizar == 2:
         print("Imprimiendo reporte...")
         sleep(1)
         imprimirTicket(saldo_lista)
-        input("Presiones [Enter] para continuar")
-        visualizar_valido = False
+        sleep(3)
     else: 
-        print("Opcion incorrecta.")
-    return (visualizar_valido)
+        print("Opcion de visualizar incorrecta, volviendo al menu.")
+        sleep(2)
 
-def consultas(saldo_pesos, saldo_soles, lista_mov):
-    opcion_valida = True
-    moneda_valida = True
-    visualizar_valido = True
-    while opcion_valida:
-            print("Seleccione una opcion: \n\n[1] Posicion GLOBAL \n[2] Movimientos")
-            opcion = int(input("-> "))
+def consultas(saldo_pesos, saldo_soles, lista_mov, opcion, moneda, visualizar):
+    if verificadorDeOpcion(opcion):
+        if opcion == 1:
+            if verificadorDeOpcion(moneda):
+                    if moneda == 1:
+                        print("Eligio mostrar el saldo en Soles Peruanos (./S)")
+                        consultadorSaldo(saldo_soles, visualizar, "Soles Peruanos")
+                    elif moneda == 2:
+                        divisa = "Pesos Argentinos"
+                        print("Eligio mostrar el saldo en Pesos Argentinos ($S)")
+                        consultadorSaldo(saldo_pesos, visualizar, "Pesos Argentinos")
+            else:
+                print("\nMoneda incorrecta, volviendo al menu.")
+                sleep(2)
+        if opcion == 2:
+            if verificadorDeOpcion(visualizar):
+                if visualizar == 1:
+                    print("\nMovimientos:\n")
+                    for i in movimientos(0,0,0,lista_mov):
+                        print(f"{i}\n")
+                    sleep(3)
+                elif visualizar == 2:
+                    print("Imprimiendo reporte...")
+                    sleep(1)
+                    imprimirTicket(movimientos(0,0,0,lista_mov))
+                    sleep(3)
+            else: 
+                print("\nOpcion incorrecta, volviendo al menu")
+                sleep(2)
+    else:
+        pass
+
+'''    while opcion_valida:
             if opcion == 1:
                 while moneda_valida:
-                    moneda = int(input("Ingrese el tipo de moneda: [1. Soles] [2. Pesos] " ))
                     if moneda == 1:
                         print("Eligio mostrar el saldo en Soles Peruanos (./S)")
                         opcion_valida = False
@@ -61,26 +89,24 @@ def consultas(saldo_pesos, saldo_soles, lista_mov):
                     else:
                         print("Moneda incorrecta, ingrese una opcion valida.")
             if opcion == 2:
-                
                 while visualizar_valido:
-                    visualizar = int(input("Como desea visualizar la consulta?: \n\n[1] En pantalla \n[2] Imprimir reporte \n-> "))
                     if visualizar == 1:
                         print("\nMovimientos:\n")
                         for i in movimientos(0,0,0,lista_mov):
                             print(f"{i}\n")
-                        input("Presiones [Enter] para continuar")
+                        sleep(3)
                         visualizar_valido = False
                         opcion_valida = False
                     elif visualizar == 2:
                         print("Imprimiendo reporte...")
                         sleep(1)
                         imprimirTicket(movimientos(0,0,0,lista_mov))
-                        input("Presiones [Enter] para continuar")
+                        sleep(3)
                         visualizar_valido = False
                         opcion_valida = False
 
                     else: 
-                        print("Opcion incorrecta.")
+                        print("Opcion incorrecta.")'''
 
 def retirar(saldo_pesos, saldo_soles, cont_clave,CLAVE, lista_mov):
     opcion_valida = True
