@@ -1,8 +1,8 @@
 # Este cajero automatico tiene las siguientes funciones:
 
 ## Funciones basicas
-- [x] Saldo
-- [x] Saldo
+- [x] Verificacion de Clave
+- [x] Verificacion de DNI
 
 ## Consultas
 - [x] Saldo
