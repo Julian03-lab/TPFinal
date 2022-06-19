@@ -2,8 +2,11 @@ import os
 from time import sleep
 import opciones
 
-#Pedimos la contraseña y verificamos si es correcta.
 def checkPassword(cont_clave, clave_original):
+    """
+    Recibe como parametro un contador para la clave y la clave correcta.
+    Retorne un valor Booleano en relacion a si la clave ingresada es correcta o incorrecta.
+    """
     correct = True
     while cont_clave < 3:
         clave = int(input("Ingrese su clave: "))
@@ -19,8 +22,11 @@ def checkPassword(cont_clave, clave_original):
                 correct = False
     return(correct)
 
-#Pedimos el DNI y verificamos si es correcto.
 def checkDni(cont_dni, dni_original):
+    """
+    Recibe como parametro un contador para el DNI y el DNI correcto.
+    Retorne un valor Booleano en relacion a si el DNI ingresado es correcto o incorrecto.
+    """
     correct = True
     while cont_dni < 3:
         dni = int(input("Ingrese su DNI: "))
@@ -36,8 +42,6 @@ def checkDni(cont_dni, dni_original):
                 correct = False
     return(correct) 
 
-
-    #Comienza el programa con la verificacion de la clave y el DNI.
 def program(checkPassword, checkDni):
     #Declaro las constantes.
     CLAVE = 12345
@@ -87,7 +91,6 @@ def program(checkPassword, checkDni):
                     os.system ("cls")
                     saldo_pesos, saldo_soles = opciones.transferir(saldo_soles,saldo_pesos, CUENTA_DESTINO, ultimos_mov)
                     
-                    
                 elif opcion == 4:
                 #Termina la ejecucion del programa.
                     os.system ("cls")
@@ -97,7 +100,6 @@ def program(checkPassword, checkDni):
                     print("Tarjeta devuelta.")
                 else:
                     print("Opcion invalida.")
-
 
 if __name__ == "__main__":
     program(checkPassword, checkDni)

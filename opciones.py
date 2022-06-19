@@ -1,12 +1,12 @@
 from time import sleep
 import tpgrupalbase
 
-def verificadorDeOpcion(opcion):
+def verificadorDeOpcion(opcion,limite):
     """
     Recibe un valor numerico que representa la cantidad de opciones validas. Retorna True si la opcion es valida y False si la opcion no es valida.
     """
 
-    if opcion == 1 or opcion == 2:
+    if opcion >= 1 and opcion <= limite:
         valido = True
     else:
         valido = False
@@ -55,9 +55,9 @@ def consultadorSaldo(saldo, visualizar, divisa):
         sleep(2)
 
 def consultas(saldo_pesos, saldo_soles, lista_mov, opcion, moneda, visualizar):
-    if verificadorDeOpcion(opcion):
+    if verificadorDeOpcion(opcion, 2):
         if opcion == 1:
-            if verificadorDeOpcion(moneda):
+            if verificadorDeOpcion(moneda, 2):
                     if moneda == 1:
                         print("Eligio mostrar el saldo en Soles Peruanos (./S)")
                         consultadorSaldo(saldo_soles, visualizar, "Soles Peruanos")
@@ -69,7 +69,7 @@ def consultas(saldo_pesos, saldo_soles, lista_mov, opcion, moneda, visualizar):
                 print("\nMoneda incorrecta, volviendo al menu.")
                 sleep(2)
         if opcion == 2:
-            if verificadorDeOpcion(visualizar):
+            if verificadorDeOpcion(visualizar, 2):
                 if visualizar == 1:
                     print("\nMovimientos:\n")
                     for i in movimientos(0,0,0,lista_mov):
