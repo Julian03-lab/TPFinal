@@ -20,6 +20,9 @@ def checkPassword(cont_clave, clave_original):
                 sleep(1)
                 print("Clave erronea 3 veces, se retendra la tarjeta.")
                 correct = False
+                print ("[Tarjeta retenida]")
+                while True:
+                    pass
     return(correct)
 
 def checkDni(cont_dni, dni_original):
@@ -40,6 +43,9 @@ def checkDni(cont_dni, dni_original):
                 sleep(1)
                 print("DNI erroneo 3 veces, se retendra la tarjeta.")
                 correct = False
+                print ("[Tarjeta retenida]")
+                while True:
+                    pass
     return(correct) 
 
 def program(checkPassword, checkDni):
@@ -64,7 +70,6 @@ def program(checkPassword, checkDni):
                 os.system ("cls")
                 print("\nIngrese una opcion: \n\n[1] Consultas \n[2] Retiros \n[3] Transferencias \n[4] Salir" )
                 opcion = int(input("\n-> "))
-                
 
                 if opcion == 1:
                     moneda = None
@@ -80,12 +85,34 @@ def program(checkPassword, checkDni):
                         print("\nOpcion incorrecta, regresando al menu.")
                         sleep(1)
                     opciones.consultas(saldo_pesos,saldo_soles, ultimos_mov, opcion_consulta, moneda, visualizar)
-                    
+                
                 elif opcion == 2:
-
-                    os.system ("cls")
-                    saldo_pesos, saldo_soles = opciones.retirar(saldo_pesos,saldo_soles,cont_clave,CLAVE, ultimos_mov)
-                    
+                    monto = None
+                    voucher = None
+                    opcion_correcta = False
+                    while opcion_correcta == False :
+                        moneda = float(input("Ingrese el tipo de moneda: [1. Soles] [2. Pesos] [3. Salir]\n-> "))
+                        if opciones.verificadorDeOpcion(moneda,3):
+                            
+                            if moneda == 1:
+                                if saldo_soles > 0:
+                                    print(f"Saldo disponible en Soles: ./S {saldo_soles}") 
+                                    monto = abs(float(input("Ingrese el monto a retirar:\n->")))
+                                    print("Desea imprimir voucher? \n[1] Si \n[2-9] No")
+                                    voucher = float(input("\n->"))
+                            if moneda == 2:
+                                if saldo_pesos > 0:
+                                    print(f"Saldo disponible en Pesos: ${saldo_pesos}")
+                                    monto = abs(float(input("Ingrese el monto a retirar:\n->")))
+                                    print("Desea imprimir voucher? \n[1] Si \n[2-9] No")
+                                    voucher = float(input("\n->"))
+                            else:
+                                pass
+                            os.system ("cls")
+                            saldo_pesos, saldo_soles, opcion_correcta = opciones.retirar(saldo_pesos,saldo_soles,cont_clave,CLAVE, ultimos_mov, moneda, monto, voucher)
+                        else:
+                            print("Moneda incorrecta.")
+    
                 elif opcion == 3:
                 #Se modifican el saldo en soles y pesos en base al valor retornado por la funcion.
                     os.system ("cls")
