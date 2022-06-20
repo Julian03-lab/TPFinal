@@ -4,21 +4,21 @@ import opciones
 
 def checkPassword(cont_clave, clave_original):
     """
-    Recibe como parametro un contador para la clave y la clave correcta.
-    Retorne un valor Booleano en relacion a si la clave ingresada es correcta o incorrecta.
+    Recibe como parámetro un contador para la clave y la clave correcta.
+    Retorna un valor Booleano en relación a si la clave ingresada es correcta o incorrecta.
     """
     correct = True
     while cont_clave < 3:
-        clave = int(input("Ingrese su clave: "))
+        clave = int(input("Ingrese su clave.\n->"))
         if clave == clave_original:
             cont_clave = 3
             correct = True
         else:
             cont_clave += 1
-            print(f"Clave erronea. Lleva [{cont_clave}] intento de [3]")
+            print(f"Clave errónea. Lleva [{cont_clave}] intento de [3]")
             if cont_clave == 3:
                 sleep(1)
-                print("Clave erronea 3 veces, se retendra la tarjeta.")
+                print("Clave errónea 3 veces, se retendra la tarjeta.")
                 correct = False
                 print ("[Tarjeta retenida]")
                 while True:
@@ -27,21 +27,21 @@ def checkPassword(cont_clave, clave_original):
 
 def checkDni(cont_dni, dni_original):
     """
-    Recibe como parametro un contador para el DNI y el DNI correcto.
-    Retorne un valor Booleano en relacion a si el DNI ingresado es correcto o incorrecto.
+    Recibe como parámetro un contador para el DNI y el DNI correcto.
+    Retorna un valor Booleano en relación a si el DNI ingresado es correcto o incorrecto.
     """
     correct = True
     while cont_dni < 3:
-        dni = int(input("Ingrese su DNI: "))
+        dni = int(input("Ingrese su DNI.\n-> "))
         if dni == dni_original:
             cont_dni = 3
             correct = True
         else:
             cont_dni += 1
-            print(f"DNI erroneo. Lleva [{cont_dni}] intento de [3]")
+            print(f"DNI erróneo. Lleva [{cont_dni}] intento de [3]")
             if cont_dni == 3:
                 sleep(1)
-                print("DNI erroneo 3 veces, se retendra la tarjeta.")
+                print("DNI erróneo 3 veces, se retendra la tarjeta.")
                 correct = False
                 print ("[Tarjeta retenida]")
                 while True:
@@ -68,21 +68,19 @@ def program(checkPassword, checkDni):
         #Si se verifico que ambos son correctos, mostramos el menu de opciones.
             while seguir:
                 os.system ("cls")
-                print("\nIngrese una opcion: \n\n[1] Consultas \n[2] Retiros \n[3] Transferencias \n[4] Salir" )
-                opcion = int(input("\n-> "))
+                opcion = int(input("\nIngrese una opcion: \n\n[1] Consultas \n[2] Retiros \n[3] Transferencias \n[4] Salir\n-> "))
 
                 if opcion == 1:
                     moneda = None
                     visualizar = None
-                    print("Seleccione una opcion: \n\n[1] Posicion GLOBAL \n[2] Movimientos")
-                    opcion_consulta = int(input("-> "))
+                    opcion_consulta = int(input("Seleccione una opcion: \n\n[1] Posición  GLOBAL \n[2] Movimientos\n-> "))
                     if opcion_consulta == 1:
-                        moneda = int(input("Ingrese el tipo de moneda: [1. Soles] [2. Pesos] " ))
-                        visualizar = int(input("Como desea visualizar la consulta?: \n\n[1] En pantalla \n[2] Imprimir reporte \n"))
+                        moneda = int(input("Ingrese el tipo de moneda: [1. Soles] [2. Pesos]\n->" ))
+                        visualizar = int(input("¿Como desea visualizar la consulta?: \n\n[1] En pantalla \n[2] Imprimir reporte \n"))
                     elif opcion_consulta == 2:
-                        visualizar = int(input("Como desea visualizar la consulta?: \n\n[1] En pantalla \n[2] Imprimir reporte \n-> "))
+                        visualizar = int(input("¿Como desea visualizar la consulta?: \n\n[1] En pantalla \n[2] Imprimir reporte \n-> "))
                     else:
-                        print("\nOpcion incorrecta, regresando al menu.")
+                        print("\nOpción incorrecta, regresando al menú.")
                         sleep(1)
                     opciones.consultas(saldo_pesos,saldo_soles, ultimos_mov, opcion_consulta, moneda, visualizar)
                 
@@ -98,16 +96,12 @@ def program(checkPassword, checkDni):
                                 if saldo_soles > 0:
                                     print(f"Saldo disponible en Soles: ./S {saldo_soles}") 
                                     monto = abs(float(input("Ingrese el monto a retirar:\n->")))
-                                    print("Desea imprimir voucher? \n[1] Si \n[2-9] No")
-                                    voucher = float(input("\n->"))
+                                    voucher = float(input("Desea imprimir voucher? \n[1] Si \n[2-9] No\n->"))
                             if moneda == 2:
                                 if saldo_pesos > 0:
                                     print(f"Saldo disponible en Pesos: ${saldo_pesos}")
                                     monto = abs(float(input("Ingrese el monto a retirar:\n->")))
-                                    print("Desea imprimir voucher? \n[1] Si \n[2-9] No")
-                                    voucher = float(input("\n->"))
-                            else:
-                                pass
+                                    voucher = float(input("Desea imprimir voucher? \n[1] Si \n[2-9] No\n->"))
                             os.system ("cls")
                             saldo_pesos, saldo_soles, opcion_correcta = opciones.retirar(saldo_pesos,saldo_soles,cont_clave,CLAVE, ultimos_mov, moneda, monto, voucher)
                         else:
@@ -115,18 +109,35 @@ def program(checkPassword, checkDni):
     
                 elif opcion == 3:
                 #Se modifican el saldo en soles y pesos en base al valor retornado por la funcion.
-                    os.system ("cls")
-                    saldo_pesos, saldo_soles = opciones.transferir(saldo_soles,saldo_pesos, CUENTA_DESTINO, ultimos_mov)
+                    cuenta_mandar = int(input("Ingrese el número  de cuenta de destino.\n->"))
+                    monto = None
+                    opcion_correcta = False
+                    while opcion_correcta == False :
+                        moneda = float(input("Ingrese el tipo de moneda: [1. Soles] [2. Pesos] [3. Salir]\n-> "))
+                        if opciones.verificadorDeOpcion(moneda,3):
+                            if moneda == 1:
+                                if saldo_soles > 0:
+                                    print(f"Saldo disponible en Soles: ./S {saldo_soles}") 
+                                    monto = abs(float(input("Ingrese el monto a transferir:\n->")))
+                            if moneda == 2:
+                                if saldo_pesos > 0:
+                                    print(f"Saldo disponible en Pesos: ${saldo_pesos}")
+                                    monto = abs(float(input("Ingrese el monto a transferir:\n->")))
+                            os.system ("cls")
+                            saldo_pesos, saldo_soles, opcion_correcta = opciones.transferir(saldo_soles,saldo_pesos, CUENTA_DESTINO, ultimos_mov, cuenta_mandar, moneda, monto)
+                        else:
+                            print("Moneda incorrecta.")
+
                     
                 elif opcion == 4:
                 #Termina la ejecucion del programa.
                     os.system ("cls")
                     seguir = False
-                    print("Transaccion finalizada. \nGracias por elegirnos ;)")
+                    print("Transacción finalizada. \nGracias por elegirnos ;)")
                     sleep(2)
                     print("Tarjeta devuelta.")
                 else:
-                    print("Opcion invalida.")
+                    print("Opción invalida.")
 
 if __name__ == "__main__":
     program(checkPassword, checkDni)
