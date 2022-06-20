@@ -1,7 +1,8 @@
 # Proyecto grupual
 ## ATM Project
 
-**@Julian Fontana, Pablo Hermosilla, Facundo Rodriguez**
+**Julian Fontana, Pablo Hermosilla, Facundo Rodriguez**
+
 **Github: @Julian03-lab @facundorodri @PabloHermosilla**
 
 *Ingenieria en Computacion - UNRN*
