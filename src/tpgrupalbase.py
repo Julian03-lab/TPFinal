@@ -1,6 +1,6 @@
 import os
 from time import sleep
-import src.opciones as opciones
+import opciones as opciones
 
 def checkPassword(cont_clave, clave_original):
     """

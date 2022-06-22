@@ -1,5 +1,5 @@
 from time import sleep
-import src.tpgrupalbase as tpgrupalbase
+import tpgrupalbase as tpgrupalbase
 
 def verificadorDeOpcion(opcion:int,limite:int):
     """
