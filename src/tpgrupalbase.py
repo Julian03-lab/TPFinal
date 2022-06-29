@@ -49,6 +49,9 @@ def checkDni(cont_dni, dni_original):
     return(correct) 
 
 def program(checkPassword, checkDni):
+    """
+    Esta funcion se encarga de inicializar el cajero y ejecutar las funciones para que ande correctamente.
+    """
     #Declaro las constantes.
     CLAVE = 12345
     DNI = 12345678
